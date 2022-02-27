@@ -1,13 +1,30 @@
+const HtmlPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader");
 const path = require("path");
 
 module.exports = {
+  mode: "development", // 배포시 'production'
+  devtool: "eval", // 배포시 'hidden-source-map' => import 해올 때 확장자를 안붙여도 됨
+  resolve: {
+    extensions: [".js", ".vue"], // 확장자 처리
+  },
   entry: {
     app: path.join(__dirname, "main.js"),
   },
   module: {
-    rules: [{}],
+    rules: [
+      {
+        test: /\.vue$/,
+        use: "vue-loader",
+      },
+    ],
   },
-  plugins: [],
+  plugins: [
+    new HtmlPlugin({
+      template: "./index.html",
+    }),
+    new VueLoaderPlugin(),
+  ],
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "dist"),
