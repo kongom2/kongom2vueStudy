@@ -1,6 +1,5 @@
-const HtmlPlugin = require("html-webpack-plugin");
-const VueLoaderPlugin = require("vue-loader");
 const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   mode: "development", // 배포시 'production'
@@ -19,12 +18,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlPlugin({
-      template: "./index.html",
-    }),
-    new VueLoaderPlugin(),
-  ],
+  plugins: [new VueLoaderPlugin()],
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "dist"),

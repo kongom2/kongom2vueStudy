@@ -1,4 +1,6 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import NumberBaseball from "./NumberBaseball";
 
-new Vue(NumberBaseball).$mount("#root");
+const app = createApp(NumberBaseball);
+
+app.mount("#root");
