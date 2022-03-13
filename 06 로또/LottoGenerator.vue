@@ -65,7 +65,6 @@ export default {
       this.winBalls = [];
       this.bonus = null;
       this.redo = false;
-      this.showBalls();
     },
   },
   mounted() {
@@ -76,7 +75,16 @@ export default {
       clearTimeout(t);
     });
   },
-  watch: {},
+  watch: {
+    winBalls(value, oldValue) {
+      // console.log(`value : ${value}`, `oldValue : ${oldValue}`);
+      console.log(value);
+      console.log(oldValue);
+      if (value.length === 0) {
+        this.showBalls();
+      }
+    },
+  },
 };
 </script>
 <style scoped></style>
